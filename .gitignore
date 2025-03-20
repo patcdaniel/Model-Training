@@ -1,0 +1,36 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment
+venv/
+.env/
+
+# Ignore dataset and generated files
+dataset.h5
+*.h5
+*.zip
+*.tar.gz
+*.csv
+*.log
+
+# Ignore trained models and checkpoints
+*.pth
+*.ckpt
+checkpoints/
+
+# Ignore SLURM job logs
+slurm-*.out
+train_output.log
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore VSCode settings
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
