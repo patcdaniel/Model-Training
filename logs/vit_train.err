@@ -1,8 +1,46 @@
-2025-03-21 13:59:35,455 - INFO - Starting training script
-2025-03-21 13:59:35,456 - INFO - Using configuration: Namespace(config='experiments/config_hb.json', data='/hb/scratch/pcdaniel/dataset.zip', output='/hb/scratch/pcdaniel/output', epochs=30, batch_size=1024, lr=0.0001, val_split=0.2, num_workers=2)
-2025-03-21 13:59:52,023 - INFO - Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
-2025-03-21 13:59:53,482 - INFO - [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
-2025-03-21 13:59:58,896 - INFO - Missing keys (head.weight, head.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
-2025-03-21 13:59:58,909 - INFO - Epoch 1/30
-Training:   0%|          | 0/964 [00:00<?, ?it/s]/var/spool/slurmd/job1479543/slurm_script: line 27: 1246254 Killed                  python src/train_ViT.py --config experiments/config_hb.json
-slurmstepd-hbnode-24: error: Detected 1 oom_kill event in StepId=1479543.batch. Some of the step tasks have been OOM Killed.
+2025-03-21 14:25:32,878 - INFO - Starting training script
+2025-03-21 14:25:32,880 - INFO - Using configuration: Namespace(config='experiments/config_hb.json', data='/hb/scratch/pcdaniel/dataset.zip', output='/hb/scratch/pcdaniel/output', epochs=20, batch_size=256, lr=0.0001, val_split=0.2, num_workers=2)
+2025-03-21 14:25:49,310 - INFO - Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+2025-03-21 14:25:49,645 - INFO - [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-03-21 14:25:57,221 - INFO - Missing keys (head.weight, head.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-03-21 14:25:57,495 - INFO - Epoch 1/20
+Training:   0%|          | 0/3854 [00:00<?, ?it/s]                                                  Traceback (most recent call last):
+  File "/hb/home/pcdaniel/Model-Training/src/train_ViT.py", line 146, in <module>
+    main()
+  File "/hb/home/pcdaniel/Model-Training/src/train_ViT.py", line 135, in main
+    train_loss = train_one_epoch(model, device, train_loader, criterion, optimizer, logger)
+  File "/hb/home/pcdaniel/Model-Training/src/train_ViT.py", line 37, in train_one_epoch
+    outputs = model(inputs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 853, in forward
+    x = self.forward_features(x)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 834, in forward_features
+    x = self.blocks(x)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/container.py", line 250, in forward
+    input = module(input)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 170, in forward
+    x = x + self.drop_path2(self.ls2(self.mlp(self.norm2(x))))
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/timm/layers/mlp.py", line 44, in forward
+    x = self.fc1(x)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hb/home/pcdaniel/.conda/envs/trainViT/lib/python3.9/site-packages/torch/nn/modules/linear.py", line 125, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 592.00 MiB. GPU 0 has a total capacity of 15.89 GiB of which 23.12 MiB is free. Including non-PyTorch memory, this process has 15.86 GiB memory in use. Of the allocated memory 15.53 GiB is allocated by PyTorch, and 47.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

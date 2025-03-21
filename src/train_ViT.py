@@ -6,13 +6,25 @@ from torch.utils.data import DataLoader, random_split
 import timm
 import json, os, datetime, logging, tqdm
 
-
-
 from scripts.dataloader import ZipDataset,custom_collate
 from scripts.utils import transform_zip_images
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print(f"✅ Using device: {device}")
+device = torch.cuda.set_device(0)
+
+num_gpus = torch.cuda.device_count()
+print(f"Number of GPUs: {num_gpus}")
+
+for i in range(num_gpus):
+    print(f"GPU {i}: {torch.cuda.get_device_name(i)}")
+
+
+if torch.cuda.is_available():
+    print("Current device:", torch.cuda.current_device())
+    print("Device name:", torch.cuda.get_device_name(torch.cuda.current_device()))
+    print("Memory allocated:", torch.cuda.memory_allocated() / 1024**2, "MB")
+    print("Max memory allocated:", torch.cuda.max_memory_allocated() / 1024**2, "MB")
+else:
+    print("No GPU available.")
 
 def train_one_epoch(model, device, dataloader, criterion, optimizer, logger):
     model.train()
@@ -27,7 +39,7 @@ def train_one_epoch(model, device, dataloader, criterion, optimizer, logger):
         loss.backward()
         optimizer.step()
         running_loss += loss.item() * inputs.size(0)
-        pbar.set_postfix(loss=f"{loss.item():.4f}")
+
         print(torch.cuda.memory_summary())
     epoch_loss = running_loss / len(dataloader.dataset)
     logger.info(f"Training loss: {epoch_loss:.4f}")

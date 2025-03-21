@@ -5,7 +5,7 @@
 #SBATCH --time=48:00:00               # Maximum runtime of 24 hours (adjust as needed)
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2             # Use 8 CPU cores per task
-#SBATCH --mem=32G                     # Request 32GB of system memory
+#SBATCH --mem=45G                     # Request 32GB of system memory
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=pcdaniel@ucsc.edu
 #SBATCH --partition=96x24gpu4                 # Request 1 GPU
@@ -21,11 +21,10 @@ module load cuda/12.6              # Adjust CUDA version if needed
 conda activate trainViT
 
 # Run the training script with a configuration file that sets the training options.
-export CUDA_VISIBLE_DEVICES=-1
-export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+# export CUDA_VISIBLE_DEVICES=-1
 
 python src/train_ViT.py --config experiments/config_hb.json
 
 # Testing GPU Access
-#python src/tensorflow-load-test.py
+# python src/tensorflow-load-test.py
 

@@ -1,2 +1,10 @@
-✅ Using device: cpu
-Using device: cpu
+Number of GPUs: 4
+GPU 0: Tesla P100-PCIE-16GB
+GPU 1: Tesla P100-PCIE-16GB
+GPU 2: Tesla P100-PCIE-16GB
+GPU 3: Tesla P100-PCIE-16GB
+Current device: 0
+Device name: Tesla P100-PCIE-16GB
+Memory allocated: 0.0 MB
+Max memory allocated: 0.0 MB
+Using device: cuda
