@@ -10,7 +10,7 @@ This repository contains code for training a Convolutional Neural Network (CNN) 
 ## 🚀 Installation
 ### **1️⃣ Clone the repository**
 ```sh
-git clone https://github.com/patcdaniel/species-behavior-cnn.git
+git clone https://github.com/patcdaniel/Model-Training.git
 cd species-behavior-cnn
 ```
 ### **2️⃣ Install dependencies**
@@ -98,7 +98,7 @@ sbatch train.slurm
 This project is licensed under the MIT License.
 
 ## 👤 Author
-- **Patrick** - [GitHub Profile](https://github.com/yourusername)
+- **Patrick** - [GitHub Profile](https://github.com/patcdaniel)
 
 ## 🌟 Acknowledgments
 Thanks GPT-4o for generating the first version of this document.
