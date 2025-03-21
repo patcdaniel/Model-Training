@@ -17,7 +17,7 @@ print(f"✅ Using device: {device}")
 def train_one_epoch(model, device, dataloader, criterion, optimizer, logger):
     model.train()
     running_loss = 0.0
-    pbar = tqdm(dataloader, desc="Training", leave=False)
+    pbar = tqdm.tqdm(dataloader, desc="Training", leave=False)
 
     for inputs, labels in pbar:
         inputs, labels = inputs.to(device), labels.to(device)

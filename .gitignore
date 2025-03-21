@@ -23,7 +23,7 @@ checkpoints/
 # Ignore SLURM job logs
 slurm-*.out
 train_output.log
-
+logs/*
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
