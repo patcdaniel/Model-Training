@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH --job-name=phytoViT
-#SBATCH --output=logs/%x_%j.out
-#SBATCH --error=logs/%x_%j.err
+#SBATCH --output=logs/vit_train.out
+#SBATCH --error=logs/vit_train.err
 #SBATCH --time=48:00:00               # Maximum runtime of 24 hours (adjust as needed)
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4             # Use 8 CPU cores per task
+#SBATCH --cpus-per-task=2             # Use 8 CPU cores per task
 #SBATCH --mem=32G                     # Request 32GB of system memory
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=pcdaniel@ucsc.edu
@@ -21,5 +21,11 @@ module load cuda/12.6              # Adjust CUDA version if needed
 conda activate trainViT
 
 # Run the training script with a configuration file that sets the training options.
-# python train.py --config config.json
-python test tensorflow-load-test.py
+export CUDA_VISIBLE_DEVICES=-1
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
+python src/train_ViT.py --config experiments/config_hb.json
+
+# Testing GPU Access
+#python src/tensorflow-load-test.py
+

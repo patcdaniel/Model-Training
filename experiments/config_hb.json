@@ -1,9 +1,9 @@
 {
-    "data": "/hb/scractch/pcdaniel/dataset.zip",
-    "output": "/hb/scractch/pcdaniel/output",
+    "data": "/hb/scratch/pcdaniel/dataset.zip",
+    "output": "/hb/scratch/pcdaniel/output", 
     "epochs": 30,
     "batch_size": 1024,
     "lr": 0.0001,
     "val_split": 0.2,
-    "num_workers": 4
+    "num_workers": 2
 }
