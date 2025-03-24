@@ -24,6 +24,8 @@ checkpoints/
 slurm-*.out
 train_output.log
 logs/*
+*.logs
+*.err
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
