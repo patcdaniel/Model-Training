@@ -3,6 +3,8 @@ __pycache__/
 *.pyc
 *.pyo
 
+# Ignore Output directory
+output/
 # Ignore virtual environment
 venv/
 .env/

@@ -1,0 +1,30 @@
+{
+  "zip_path": "/hb/scratch/pcdaniel/dataset2.zip",
+  "batch_size": 32,
+  "epochs": 20,
+  "img_size": 299,
+  "split_ratio": 0.8,
+  "output_dir": "/hb/scratch/pcdaniel/models/xception2025",
+  "resume": false,
+  "fine_tune_at": 5,
+  "fine_tune_lr": 1e-5,
+  "compute_metrics": true,
+  "log_classification_report": true,
+  "print_per_class_accuracy": true,
+  "callbacks": {
+    "checkpoint": {
+      "enabled": true,
+      "save_best_only": true,
+      "filename": "model_checkpoint.keras"
+    },
+    "early_stopping": {
+      "enabled": true,
+      "patience": 5,
+      "restore_best_weights": true
+    },
+    "tensorboard": {
+      "enabled": true,
+      "log_dir": "logs"
+    }
+  }
+}
