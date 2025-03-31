@@ -16,7 +16,7 @@ def load_datasets_from_zip(zip_path, img_size=(299, 299), batch_size=32, split_r
         shuffle_buffer (int): Buffer size for shuffling dataset
 
     Returns:
-        train_ds, val_ds, label_to_index (dict), index_to_label (dict), train_labels (List[str])
+        train_ds, val_ds, label_to_index (dict), index_to_label (dict), train_labels (List[str]), num_train_samples (int)
     """
 
     with zipfile.ZipFile(zip_path, 'r') as archive:
@@ -42,11 +42,13 @@ def load_datasets_from_zip(zip_path, img_size=(299, 299), batch_size=32, split_r
     val_data = data[split_idx:]
 
     train_labels = [label for _, label in train_data]  # New: list of training labels
+    num_train_samples = len(train_labels)
 
     def preprocess_image(image_bytes):
         img = tf.image.decode_png(image_bytes, channels=3)
         img = tf.image.resize(img, img_size)
         img = tf.cast(img, tf.float32) / 255.0
+        
         return img
 
     def make_dataset(data_subset):
@@ -63,7 +65,7 @@ def load_datasets_from_zip(zip_path, img_size=(299, 299), batch_size=32, split_r
             )
         )
 
-    train_ds = make_dataset(train_data).shuffle(shuffle_buffer).batch(batch_size).prefetch(tf.data.AUTOTUNE)
+    train_ds = (make_dataset(train_data).repeat().shuffle(shuffle_buffer).batch(batch_size).prefetch(tf.data.AUTOTUNE)) # Added shuffle before cache
     val_ds = make_dataset(val_data).batch(batch_size).prefetch(tf.data.AUTOTUNE)
 
-    return train_ds, val_ds, label_to_index, index_to_label, train_labels
+    return train_ds, val_ds, label_to_index, index_to_label, train_labels, num_train_samples

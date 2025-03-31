@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=phytoViT
-#SBATCH --output=logs/vit_train.out
-#SBATCH --error=logs/vit_train.err
+#SBATCH --job-name=phytocnn
+#SBATCH --output=logs/cnn_train.out
+#SBATCH --error=logs/cnn_train.err
 #SBATCH --time=72:00:00               # Maximum runtime of 24 hours (adjust as needed)
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2             # Use 8 CPU cores per task
-#SBATCH --mem=45G                     # Request 32GB of system memory
+#SBATCH --mem=32G                     # Request 32GB of system memory
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=pcdaniel@ucsc.edu
 #SBATCH --partition=96x24gpu4                 # Request 1 GPU

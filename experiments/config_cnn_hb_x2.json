@@ -1,24 +1,24 @@
 {
-  "zip_path": "/hb/scratch/pcdaniel/dataset_2.zip",
-  "batch_size": 32,
+  "zip_path": "/hb/scratch/pcdaniel/dataset.zip",
+  "batch_size": 8,
   "epochs": 20,
   "img_size": 299,
-  "split_ratio": 0.8,
-  "output_dir": "/hb/scratch/pcdaniel/models/xception2025",
-  "resume": true,
-  "resume_epoch": 8,
-  "mixed_precision": true,
-  "fine_tune_at": 5,
+  "split_ratio": 0.7,
+  "output_dir": "/hb/scratch/pcdaniel/models/xception2025_x2",
+  "resume": false,
+  "resume_epoch": 1,
+  "mixed_precision": false,
+  "fine_tune_at": 3,
   "fine_tune_lr": 1e-5,
   "compute_metrics": true,
   "log_classification_report": true,
   "print_per_class_accuracy": true,
-  "save_every_n_epochs": 1,
+  "save_every_n_epochs": 5,
   "callbacks": {
     "checkpoint": {
       "enabled": true,
       "save_best_only": true,
-      "filename": "model_checkpoint.keras"
+      "filename": "model_checkpoint_x.keras"
     },
     "early_stopping": {
       "enabled": true,
